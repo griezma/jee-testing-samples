@@ -1,0 +1,26 @@
+plugins {
+    id 'war'
+}
+
+repositories {
+    jcenter()
+    maven {
+        url "https://maven.repository.redhat.com/ga/"
+    }
+}
+
+dependencies {
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.+'
+
+    testImplementation 'junit:junit:4.13'
+
+    implementation platform('org.jboss.arquillian:arquillian-bom:1.6.0.Final')
+    //implementation platform('org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-gradle-depchain:3.1.4')
+    testImplementation 'org.jboss.arquillian.junit:arquillian-junit-container'
+    //testImplementation 'org.jboss.arquillian.protocol:arquillian-protocol-servlet'
+    //testRuntime 'org.wildfly.arquillian:wildfly-arquillian-container-bootable:3.0.0.Final'
+    testImplementation 'org.wildfly.arquillian:wildfly-arquillian-container-remote:3.0.0.Final'
+
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+}
