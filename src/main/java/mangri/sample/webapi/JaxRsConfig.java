@@ -1,4 +1,4 @@
-package mangri.sample.jaxrs;
+package mangri.sample.webapi;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

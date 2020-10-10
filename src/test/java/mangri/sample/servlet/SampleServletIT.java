@@ -11,8 +11,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
@@ -26,9 +26,9 @@ public class SampleServletIT {
             .addClass(SampleServlet.class);
     }
 
-    @Test @RunAsClient
-    public void succeeds() throws Exception {
-        URL url = new URL("http://127.0.0.1:8080/sample/check");
+    @Test
+    public void servletShouldRespondWithMessage(@ArquillianResource URL contextUrl) throws Exception {
+        URL url = new URL(contextUrl, "check");
         try (InputStream is = url.openStream()) {
             String response = new BufferedReader(new InputStreamReader(is)).readLine();
             assertEquals("yes it works", response);
