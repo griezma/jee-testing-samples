@@ -1,4 +1,4 @@
-package mangri.sample.messaging;
+package mangri.sample.multimodule;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;

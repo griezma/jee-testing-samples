@@ -1,4 +1,4 @@
-package mangri.sample.messaging;
+package mangri.sample.multimodule;
 
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;

@@ -1,9 +1,8 @@
-package mangri.sample.messaging;
+package mangri.sample.multimodule;
 
+import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
-import javax.annotation.Resource;
-import javax.ejb.ActivationConfigProperty;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -33,7 +32,6 @@ public class CommandHandler implements MessageListener {
             
         } catch (JMSException e) {
             e.printStackTrace();
-
         }
     }
 

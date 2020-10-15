@@ -1,4 +1,4 @@
-package mangri.sample.messaging;
+package mangri.sample.multimodule;
 
 import java.io.Serializable;
 

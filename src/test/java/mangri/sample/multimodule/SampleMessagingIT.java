@@ -1,4 +1,4 @@
-package mangri.sample.messaging;
+package mangri.sample.multimodule;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -47,7 +47,7 @@ public class SampleMessagingIT {
         var response = service.greet("dude", "try hard");
         //response.whenComplete((a, b) -> System.out.println(a + b));
         response.whenComplete((res, err) -> System.out.println("result: " + res + "\nerror: " + err));
-        String result = response.join();
+        String result = response.get(1, TimeUnit.SECONDS);
         assertTrue(result.startsWith("hi dude"));
     }
 }

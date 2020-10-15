@@ -2,8 +2,6 @@ package mangri.sample.webapi;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 import javax.ws.rs.client.Client;
