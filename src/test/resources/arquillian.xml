@@ -5,6 +5,7 @@
     
     <engine>
         <property name="deploymentExportPath">shrinkwrap</property>
+        <property name="deploymentExportExploded">true</property>
     </engine>
 
     <container qualifier="wildfly-remote" default="true">
@@ -12,6 +13,8 @@
             <property name="managementPort">9990</property>
             <property name="username">admin</property>
             <property name="password">admin</property>
+
+            <property name="outputToConsole">true</property>
         </configuration>
     </container>
 

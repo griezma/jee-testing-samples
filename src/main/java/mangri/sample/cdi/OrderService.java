@@ -7,7 +7,7 @@ import javax.inject.Inject;
 @RequestScoped
 public class OrderService {
     @Inject
-    Event<String> orderEvent;
+    private Event<String> orderEvent;
     
     public void createOrder(String product, int amount) {
         orderEvent.fire(product + ", " + amount);
