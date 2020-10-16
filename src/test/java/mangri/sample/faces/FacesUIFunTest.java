@@ -26,7 +26,7 @@ import lombok.extern.java.Log;
 
 @Log
 @RunWith(Arquillian.class)
-public class JsfUIFunTest {
+public class FacesUIFunTest {
     @Deployment(testable = false)
     public static WebArchive deploy() throws Exception {
         File webapp = new File("src/main/webapp");
@@ -34,9 +34,9 @@ public class JsfUIFunTest {
         WebArchive war = ShrinkWrap.create(WebArchive.class, "sample.war")
                 .addPackage(GreetController.class.getPackage())
                 // .addAsWebInfResource(new File(webapp, "WEB-INF/web.xml"), "web.xml")
-                .addAsWebResource(new File(webapp, "jsf/sample.xhtml"), "jsf/sample.xhtml");
+                .addAsWebResource(new File(webapp, "faces-sample.xhtml"), "faces-sample.xhtml");
 
-        addDirectory(webapp, "jsf/templates", war::addAsWebResource);
+        addDirectory(webapp, "templates", war::addAsWebResource);
 
         return war;
     }
@@ -56,13 +56,13 @@ public class JsfUIFunTest {
 
     @Test
     public void webdriver() throws MalformedURLException {
-        browser.get(new URL(context, "jsf/sample.xhtml").toString());
+        browser.get(new URL(context, "faces-sample.xhtml").toString());
         assertEquals("Sample Facelet Page", browser.getTitle());
     }
 
     @Test
-    public void shouldDeliverHtml(@ArquillianResource URL context) throws Exception {
-        String response = Http.GET(new URL(context, "jsf/sample.xhtml"));
+    public void showHtmlResponse(@ArquillianResource URL context) throws Exception {
+        String response = Http.GET(new URL(context, "faces-sample.xhtml"));
         log.info(response);
         assertTrue(response.contains("Hi there"));
     }
