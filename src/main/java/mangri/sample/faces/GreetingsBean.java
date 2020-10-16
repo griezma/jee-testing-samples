@@ -11,7 +11,7 @@ import lombok.Getter;
 
 @Named("greet")
 @SessionScoped
-public class GreetController implements Serializable {
+public class GreetingsBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Getter

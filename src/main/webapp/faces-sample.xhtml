@@ -1,17 +1,27 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f = "http://xmlns.jcp.org/jsf/core"
     xmlns:h = "http://xmlns.jcp.org/jsf/html"
-    xmlns:jsf = "http://xmlns.jcp.org/jsf"
-    xmlns:p = "http://xmlns.jcp.org/jsf/passthrough"
     xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
-    template = "templates/layout.xhtml">
+    template = "/WEB-INF/templates/layout.xhtml">
 
-    <ui:define name="title">Sample Facelet Page</ui:define>
 
+    <ui:define name="title">
+        Sample Facelet Page
+    </ui:define>
+    
+    <ui:define name="header">
+        <h1 class="title">Sample Facelet Page</h1>
+    </ui:define>
+    
     <ui:define name="main">
-        <h1 jsf:id="heading">#{greet.greeting}</h1>
+        <h:outputStylesheet name="styles/faces-sample.css" />
+        
+        <h2>#{greet.greeting}</h2>
 
-        <h:dataTable value="#{greet.broHellos}" var="next">
+        <h4>Bro messages</h4>
+        <h:dataTable styleClass="brotable" 
+            value="#{greet.broHellos}" 
+            var="next">
             <h:column>
                 <f:facet name="header">Bro</f:facet>
                 #{next.name}

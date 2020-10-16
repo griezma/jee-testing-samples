@@ -1,0 +1,24 @@
+.brotable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.brotable tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.brotable tr:hover {
+    background-color: lightblue;
+}
+
+.brotable th {
+    background-color: blue;
+    color: white;
+    font-size: 1.1em;
+}
+
+.brotable th,
+.brotable td {
+    padding: 15px;
+    text-align: left;
+}

@@ -26,17 +26,18 @@ import lombok.extern.java.Log;
 
 @Log
 @RunWith(Arquillian.class)
-public class FacesUIFunTest {
+public class JsfUIFunTest {
     @Deployment(testable = false)
     public static WebArchive deploy() throws Exception {
         File webapp = new File("src/main/webapp");
 
         WebArchive war = ShrinkWrap.create(WebArchive.class, "sample.war")
-                .addPackage(GreetController.class.getPackage())
-                // .addAsWebInfResource(new File(webapp, "WEB-INF/web.xml"), "web.xml")
+                .addPackage(GreetingsBean.class.getPackage())
+                .addAsWebInfResource(new File(webapp, "WEB-INF/web.xml"), "web.xml")
                 .addAsWebResource(new File(webapp, "faces-sample.xhtml"), "faces-sample.xhtml");
 
-        addDirectory(webapp, "templates", war::addAsWebResource);
+        addDirectory(webapp, "WEB-INF/templates", war::addAsWebResource);
+        addDirectory(webapp, "resources/styles", war::addAsWebResource);
 
         return war;
     }
