@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-
-<html xmlns:h = "http://xmlns.jcp.org/jsf/html"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f = "http://xmlns.jcp.org/jsf/core"
+    xmlns:h = "http://xmlns.jcp.org/jsf/html"
+    xmlns:jsf = "http://xmlns.jcp.org/jsf"
+    xmlns:p = "http://xmlns.jcp.org/jsf/passthrough"
     xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
-    xmlns:p = "http://xmlns.jcp.org/jsf/passthrough">
+    template = "templates/application.xhtml">
 
-    <h:head>
-        <title>Sample Facelet Page</title>
-    </h:head>
+    <ui:define name="title">Sample Facelet Page</ui:define>
 
-    <h:body>
-        <h1>#{greet.greeting}</h1>
+    <ui:define name="main">
+        <h1 jsf:id="heading">#{greet.greeting}</h1>
 
         <h:dataTable value="#{greet.broHellos}" var="next">
             <h:column>
@@ -22,5 +21,5 @@
                 #{next.message}
             </h:column>
         </h:dataTable>
-    </h:body>
-</html>
+    </ui:define>
+</ui:composition>

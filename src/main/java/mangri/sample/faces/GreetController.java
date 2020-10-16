@@ -1,4 +1,4 @@
-package mangri.sample.jsf;
+package mangri.sample.faces;
 
 import java.io.Serializable;
 import java.util.List;
