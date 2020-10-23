@@ -28,14 +28,14 @@ dependencies {
     testRuntimeOnly 'javax.xml.bind:jaxb-api:2.3.1'
 
     // jms remote client
-    testRuntimeOnly 'org.wildfly:wildfly-jms-client-bom:20.0.0.Final'
+    testImplementation 'org.wildfly:wildfly-jms-client-bom:20.0.0.Final'
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 }
 
 war {
-    archiveName = 'jeeit.war'
+    archiveFileName = 'jeeit.war'
 }
 
 test {
@@ -44,7 +44,7 @@ test {
     }
 }
 
-task wad(type: Copy, dependsOn: war) {
+task wad(type: Copy, dependsOn: war, description: 'Watch and deploy') {
     from war.archiveFile
     into 'wad-deploy'
 }

@@ -1,7 +1,6 @@
 package griezma.jeeit.persistence;
 
 import java.math.BigInteger;
-import java.util.Optional;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

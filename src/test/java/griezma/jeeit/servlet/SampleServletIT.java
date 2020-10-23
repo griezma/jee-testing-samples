@@ -15,8 +15,6 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import griezma.jeeit.servlet.SampleServlet;
-
 @RunWith(Arquillian.class)
 public class SampleServletIT {
     @Deployment(testable = false)

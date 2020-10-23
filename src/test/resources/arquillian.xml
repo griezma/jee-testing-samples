@@ -13,8 +13,6 @@
             <property name="managementPort">9990</property>
             <property name="username">admin</property>
             <property name="password">admin</property>
-
-            <property name="outputToConsole">true</property>
         </configuration>
     </container>
 

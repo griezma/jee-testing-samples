@@ -1,5 +1,6 @@
 package griezma.jeeit.messaging;
 
+import static java.util.stream.Collectors.joining;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -25,10 +26,6 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.naming.client.WildFlyInitialContextFactory;
-
-import griezma.jeeit.messaging.JmsEchoService;
-
-import static java.util.stream.Collectors.joining;
 
 @RunWith(Arquillian.class)
 public class JmsEchoServiceTest {

@@ -22,10 +22,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import griezma.jeeit.faces.GreetingsBean;
-import lombok.extern.java.Log;
-
-@Log
 @RunWith(Arquillian.class)
 public class JsfUIFunTest {
     @Deployment(testable = false)
@@ -63,9 +59,8 @@ public class JsfUIFunTest {
     }
 
     @Test
-    public void showHtmlResponse(@ArquillianResource URL context) throws Exception {
+    public void checkHtmlResponse(@ArquillianResource URL context) throws Exception {
         String response = Http.GET(new URL(context, "faces-sample.xhtml"));
-        log.info(response);
         assertTrue(response.contains("Hi there"));
     }
 }

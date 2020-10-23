@@ -2,7 +2,6 @@ package griezma.jeeit.persistence;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigInteger;
@@ -16,18 +15,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
-import org.hamcrest.Matcher;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 
-import griezma.jeeit.persistence.FibonacciService;
-import lombok.extern.java.Log;
-
-@Log
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Arquillian.class)
 public class PersistenceTest {
     @Deployment
@@ -37,6 +34,7 @@ public class PersistenceTest {
                 .addAsResource("persistence/import.sql", "import.sql")
                 .addAsWebInfResource("persistence/sample-ds.xml", "sample-ds.xml")
                 .addAsWebInfResource("persistence/web.xml", "web.xml");
+                //.addAsWebInfResource("logging.properties");
     }
 
     @Inject
@@ -54,6 +52,7 @@ public class PersistenceTest {
         try (Connection conn = sampleDs.getConnection()) {
             ResultSet rs = conn.createStatement().executeQuery("select count(*) from fibos");
             assertTrue(rs.next());
+            System.out.println("count: " + rs.getInt(1));
             assertEquals(3, rs.getInt(1));
         }
     }
@@ -62,7 +61,7 @@ public class PersistenceTest {
     public void shouldFetchCalculatedFibosAndFromCache() {
         int base = 23;
         BigInteger fibo = fibos.fibo(base);
-        log.info("fibo of " + base + " is " + fibo);
+        System.out.println("fibo of " + base + " is " + fibo);
         assertTrue("big positive expected: " + fibo, fibo.compareTo(BigInteger.ZERO) > 0);
 
         fibos.fibo(22);
