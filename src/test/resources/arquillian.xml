@@ -15,16 +15,4 @@
             <property name="password">admin</property>
         </configuration>
     </container>
-
-    <container qualifier="wildfly-remote-host">
-        <configuration>
-            <property name="managementAddress">192.168.0.153</property>
-            <property name="managementPort">9990</property>
-            <property name="username">admin</property>
-            <property name="password">admin</property>
-        </configuration>
-        <protocol type="Servlet 3.0">
-            <property name="host">192.168.0.153</property>
-        </protocol>
-    </container>
 </arquillian>

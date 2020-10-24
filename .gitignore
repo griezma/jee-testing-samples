@@ -6,5 +6,6 @@ build
 .project
 .settings/
 shrinkwrap/
+target/
 .vscode/
 wad-deploy/
