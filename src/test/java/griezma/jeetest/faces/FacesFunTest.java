@@ -1,7 +1,9 @@
 package griezma.jeetest.faces;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.both;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -14,21 +16,15 @@ import java.nio.file.Paths;
 import java.util.function.BiConsumer;
 
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.drone.api.annotation.Drone;
-import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.InitialPage;
-import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 @RunWith(Arquillian.class)
 public class FacesFunTest {
@@ -57,17 +53,8 @@ public class FacesFunTest {
     @Drone
     WebDriver browser;
 
-    @Page
-    SamplePage samplePage;
-
     @ArquillianResource
     URL context;
-
-
-    @Before
-    public void initialPage() {
-        Graphene.goTo(SamplePage.class);
-    }
 
     @Test
     public void loadingDefaultPageOfContext() throws MalformedURLException {
@@ -76,14 +63,24 @@ public class FacesFunTest {
     }
 
     @Test
-    public void checkHtmlResponse(@ArquillianResource URL context) throws Exception {
+    public void validateHtmlResponse(@ArquillianResource URL context) throws Exception {
         String response = Http.GET(new URL(context, "faces-sample.xhtml"));
         //System.out.println(response);
         assertTrue(response.contains("Hi there"));
     }
 
     @Test
-    public void validateSamplePage() {
+    public void containsExpectedGreeting(@InitialPage FacesSamplePage samplePage) {
         assertEquals("Hi there", samplePage.getGreeting());
+    }
+
+    @Test
+    public void addingGreeting_appearsInTable(@InitialPage FacesSamplePage page) {
+        page.addGreeting("frobert", "gschamster diener");
+        String tableHtml = page.broTable().getText();
+        assertThat("contains new row with greeting", tableHtml, 
+            both(containsString("frobert"))
+                .and(containsString("gschamster")));
+
     }
 }

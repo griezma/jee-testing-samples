@@ -16,19 +16,45 @@
     <ui:define name="main">
         <h:outputStylesheet name="styles/faces-sample.css" />
         
-        <h2 class="greeting">#{greet.greeting}</h2>
+        <h1 class="greeting">#{greet.greeting}</h1>
 
-        <h4>Bro messages</h4>
+        <hr />
+
+        <h2>Wanna say something?</h2>
+
+        <h:form id="add" styleClass="form_fo">
+            <div class="fo_group">
+                <h:outputLabel for="name" value="Name" />
+                <h:inputText id="newName" value="#{greet.newName}" required="true" />
+                <h:message for="bro" errorClass="invalid" />
+            </div>
+            <div class="fo_group">
+                <h:outputLabel for="greeting" value="Message" />
+                <h:inputText id="newMessage" value="#{greet.newMessage}" required="true" />
+                <h:message for="message" errorClass="invalid" />
+            </div>
+            <div class="fo_actions">
+                <h:commandButton 
+                    id="submit" 
+                    action="#{greet.addGreeting}"
+                    value="Send message" />
+            </div>
+        </h:form>
+
+        <hr />
+
+        <h2>Hellos from Bros</h2>
         <h:dataTable styleClass="brotable" 
-            value="#{greet.broHellos}" 
-            var="next">
+            value="#{broHellos}" 
+            var="bro"
+            columnClasses="colbro,colsays">
             <h:column>
                 <f:facet name="header">Bro</f:facet>
-                #{next.name}
+                #{bro.name}
             </h:column>
             <h:column>
                 <f:facet name="header">Says</f:facet>
-                #{next.message}
+                #{bro.message}
             </h:column>
         </h:dataTable>
     </ui:define>

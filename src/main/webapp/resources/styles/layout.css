@@ -3,18 +3,18 @@ body {
     font-family: Helvetica, sans-serif;
 }
 
-.ly_layout {
+.layout_ly {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 10% auto 7%;
+    grid-template-rows: 4em auto 3em;
     grid-template-areas: 
         "header header"
         "side main"
         "footer footer";
 }
 
-.lyheader {
+.ly_header {
     grid-area: header;
     background-color: blue;
     color: white;
@@ -23,26 +23,78 @@ body {
     align-items: center;
 }
 
-.lylogo {
+.ly_logo {
     color: inherit;
-    font-size: 4em;
+    font-size: 4.5em;
     margin-left: auto;
 }
 
-.lyside {
+.ly_side {
     grid-area: side;
     background-color: #eee;
     padding: 8px;
     font-size: 1.2em;
 }
 
-.lymain {
+.ly_main {
     grid-area: main;
     padding: 15px;
 }
 
-.lyfooter {
+.ly_footer {
+    background-color: lightblue;
     grid-area: footer;
-    background-color: lightskyblue;
     padding: 8px;
+}
+
+input[type=text] {
+    border: none;
+    box-sizing: border-box;
+    margin: 8px 0;
+    padding: 12px 20px;
+    width: 100%;
+}
+
+button,
+input[type=submit] {
+    border: none;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: bold;
+    opacity: .8;
+    padding: 16px 32px;
+    text-align: center;
+}
+
+button:hover,
+input[type=submit]:hover {
+    opacity: 1;
+}
+
+button.disabled,
+input[type=submit].disabled {
+    opacity: .6;
+}
+
+hr {
+    margin: 32px 0 24px 0;
+    opacity: .5;
+}
+
+.form_fo {
+    background-color: blue;
+    color: white;
+    padding: 24px;
+}
+
+.fo_group {
+    margin-top: 8px;
+}
+
+.fo_actions {
+    margin-top: 16px;
 }
