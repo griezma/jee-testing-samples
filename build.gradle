@@ -2,6 +2,10 @@ plugins {
     id 'war'
 }
 
+compileTestJava {
+    options.release = 11
+}
+
 repositories {
     jcenter()
     maven {
@@ -13,6 +17,7 @@ dependencies {
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.+'
 
     testImplementation 'junit:junit:4.13'
+    testImplementation 'org.hamcrest:hamcrest-core:2.2'
 
     implementation platform('org.jboss.arquillian:arquillian-bom:1.6.0.Final')
     testImplementation 'org.jboss.arquillian.junit:arquillian-junit-container'
