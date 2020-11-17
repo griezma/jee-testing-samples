@@ -25,13 +25,13 @@
         <h:form id="add" styleClass="form_fo">
             <div class="fo_group">
                 <h:outputLabel for="name" value="Name" />
-                <h:inputText id="newName" value="#{greet.newName}" required="true" />
-                <h:message for="bro" errorClass="invalid" />
+                <h:inputText id="newName" value="#{greet.newName}" required="true" requiredMessage="No way" />
+                <h:message for="newName" errorClass="fo_mess--invalid" />
             </div>
             <div class="fo_group">
                 <h:outputLabel for="greeting" value="Message" />
-                <h:inputText id="newMessage" value="#{greet.newMessage}" required="true" />
-                <h:message for="message" errorClass="invalid" />
+                <h:inputText id="newMessage" value="#{greet.newMessage}" required="true" requiredMessage="Don't be shy" />
+                <h:message for="newMessage" errorClass="fo_mess--invalid" />
             </div>
             <div class="fo_actions">
                 <h:commandButton 

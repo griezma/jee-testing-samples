@@ -75,12 +75,17 @@ public class FacesFunTest {
     }
 
     @Test
-    public void addingGreeting_appearsInTable(@InitialPage FacesSamplePage page) {
+    public void addingGreeting_aNewRowAppearsInTable(@InitialPage FacesSamplePage page) {
         page.addGreeting("frobert", "gschamster diener");
         String tableHtml = page.broTable().getText();
         assertThat("contains new row with greeting", tableHtml, 
             both(containsString("frobert"))
                 .and(containsString("gschamster")));
+    }
 
+    @Test
+    public void addingGreetingWithoutName_displaysValidationError(@InitialPage FacesSamplePage page) {
+        page.addGreeting("", "foo");
+        assertEquals("No way", page.validationMessage());
     }
 }
